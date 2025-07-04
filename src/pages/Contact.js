@@ -1,0 +1,101 @@
+import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import './Contact.css';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaHandshake, FaLaptopCode, FaClock, FaUser, FaEdit } from 'react-icons/fa';
+
+const Contact = () => {
+    return (
+        <div className="contact-page">
+            <Navbar />
+
+            <section className="contact-section1">
+                <div className="contact-heading">
+                    <h2>Why You Should Contact Us!</h2>
+                    <div className="contact-underline"></div>
+                </div>
+                <div className="contact-cards">
+                    <div className="contact-card">
+                        <FaHandshake className="contact-icon" />
+                        <h3 className="contact-card-title">Partnership Approach</h3>
+                        <p className="contact-card-desc">We believe in building long-term relationships and collaborating closely with our clients.</p>
+                    </div>
+                    <div className="contact-card">
+                        <FaLaptopCode className="contact-icon" />
+                        <h3 className="contact-card-title">Creative Solutions</h3>
+                        <p className="contact-card-desc">Our team brings creativity and technical excellence to every project we take on.</p>
+                    </div>
+                    <div className="contact-card">
+                        <FaPhoneAlt className="contact-icon" />
+                        <h3 className="contact-card-title">Responsive Support</h3>
+                        <p className="contact-card-desc">Quick responses and reliable assistance whenever you need us.</p>
+                    </div>
+                    <div className="contact-card">
+                        <FaEnvelope className="contact-icon" />
+                        <h3 className="contact-card-title">Easy Communication</h3>
+                        <p className="contact-card-desc">Reach us easily via phone or email and we’ll be happy to help.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="contact-section2">
+                <div className="contact-section2-container">
+                    <div className="contact-info">
+                        <h3><FaMapMarkerAlt className="contact-info-icon" /> Our Office Address:</h3>
+                        <p>Ganesh theatre, opposite building,<br /> Tagarapuvalasa (531163), Visakhapatnam</p>
+
+                        <h3><FaEnvelope className="contact-info-icon" /> Email Address:</h3>
+                        <p>chvapps7@gmail.com</p>
+
+                        <h3><FaPhoneAlt className="contact-info-icon" /> Mobile Number:</h3>
+                        <p>+91 7075531402</p>
+
+                        <h3><FaClock className="contact-info-icon" /> Business Hours:</h3>
+                        <p>Monday – Friday: 9:00 AM – 6:00 PM (PST)<br />Saturday – Sunday: Closed</p>
+                    </div>
+                    <div className="contact-map">
+                        <iframe
+                            title="Office Location"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.523746385073!2d83.438167!3d17.899850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39434e9a8e7b0f%3A0x6d3f6e1e54e8b8cb!2sTagarapuvalasa!5e0!3m2!1sen!2sin!4v1700000000000"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, borderRadius: '12px' }}
+                            allowFullScreen=""
+                            loading="lazy"
+                        ></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section className="contact-section3">
+                <div className="contact-section3-container">
+                    <h2>Get In Touch</h2>
+                    <div className="contact-underline"></div>
+                    <p className="contact-form-desc">We would love to hear from you. Please fill out the form below and we will get back to you as soon as possible.</p>
+                    <form className="contact-form">
+                        <div className="contact-form-group">
+                            <FaUser className="contact-form-icon" />
+                            <input type="text" placeholder="Your Name" required />
+                        </div>
+                        <div className="contact-form-group">
+                            <FaEnvelope className="contact-form-icon" />
+                            <input type="email" placeholder="Your Email" required />
+                        </div>
+                        <div className="contact-form-group">
+                            <FaEdit className="contact-form-icon" />
+                            <input type="text" placeholder="Subject" required />
+                        </div>
+                        <div className="contact-form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" className="contact-form-btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    );
+};
+
+export default Contact;
