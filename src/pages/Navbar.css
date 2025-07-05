@@ -6,6 +6,45 @@
   --dark: #0f0f0f;
   --accent: #1c1c1c;
 }
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-btn {
+  background: transparent;
+  border: none;
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.nav-dropdown-menu a {
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(0,0,0,0.05);
+}
+
 
 .navbar {
   position: fixed;

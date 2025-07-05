@@ -356,6 +356,93 @@
 
 
 
+/* section 4 */
+.about-section4 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 80px 20px;
+  background: #1a1a1a;
+  color: #edf6f5;
+  font-family: 'Outfit', sans-serif;
+}
+
+.about-section4-card {
+  background: #222;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  flex: 1 1 300px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-section4-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+}
+
+.about-section4-icon {
+  font-size: 48px;
+  color: #00ecd7;
+  margin-bottom: 20px;
+}
+
+.about-section4-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #00ecd7;
+}
+
+.about-section4-desc {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.8;
+}
+
+@media screen and (max-width: 1024px) {
+  .about-section4-card {
+    padding: 25px 20px;
+  }
+
+  .about-section4-title {
+    font-size: 20px;
+  }
+
+  .about-section4-desc {
+    font-size: 14px;
+  }
+
+  .about-section4-icon {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-section4 {
+    padding: 60px 15px;
+  }
+
+  .about-section4-card {
+    padding: 20px 15px;
+  }
+
+  .about-section4-title {
+    font-size: 18px;
+  }
+
+  .about-section4-desc {
+    font-size: 13px;
+  }
+
+  .about-section4-icon {
+    font-size: 36px;
+  }
+}
 
 
 

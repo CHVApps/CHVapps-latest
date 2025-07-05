@@ -1,0 +1,74 @@
+.sidebar {
+  background: #1a1a1a;
+  color: #edf6f5;
+  padding: 0px 20px;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+}
+
+.sidebar-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00ecd7;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar-course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-course-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 12px;
+  background: #222;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-course-title:hover {
+  background: #00ecd7;
+  color: #0f0f0f;
+  transform: translateX(5px);
+}
+
+.sidebar-topic-list {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.sidebar-topic-item {
+  font-size: 14px;
+  padding: 8px 10px;
+  margin: 4px 0;
+  background: #2a2a2a;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-topic-item:hover {
+  background: #00ecd7;
+  color: #0f0f0f;
+  transform: translateX(5px);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}

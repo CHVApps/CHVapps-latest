@@ -60,9 +60,9 @@ function HomePage() {
 
   const navigate = useNavigate();
   const handleLinkClick = (path) => {
-  navigate(path);
-  window.scrollTo(0, 0);
-};
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
 
 
   useEffect(() => {
@@ -94,23 +94,24 @@ function HomePage() {
       image: '/images/project3.webp'
     },
     {
-      title: 'Heading 2',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      title: 'Living Lines',
+      desc: 'This project is a feature-rich e-commerce website designed to provide seamless shopping experiences with modern UI, secure payments, and real-time inventory management.',
       points: ['Innovative Solutions', 'Cutting-Edge Tech', 'Scalable Designs', 'Robust Security'],
-      image: '/images/project3.webp'
+      image: '/images/show1.png'
     },
     {
-      title: 'Heading 3',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+      title: 'Aaiswarya Lakshmi',
+      desc: 'This website is a modern women’s boutique platform showcasing elegant fashion collections, user-friendly design, and seamless online shopping experience.',
       points: ['User-Centric UI/UX', '24/7 Support', 'Cloud Integration', 'Agile Development'],
-      image: '/images/project3.webp'
+      image: '/images/show2.png'
     },
     {
-      title: 'Heading 4',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-      points: ['Data Analytics', 'Machine Learning', 'SEO Optimization', 'Continuous Improvement'],
-      image: '/images/project3.webp'
+      title: 'KidZee Babametta Pre-school',
+      desc: 'This is a vibrant pre-school website designed to showcase the school’s programs, activities, and admissions information in a fun and engaging way for parents and children.',
+      points: ['Interactive Design', 'SEO Optimization', 'Easy Navigation', 'Mobile Friendly'],
+      image: '/images/show3.png'
     }
+
   ];
 
   useEffect(() => {
@@ -263,20 +264,20 @@ function HomePage() {
       </section>
 
       <section className="home-section2-wrapper">
-        <div className="home-section2-header">Our Unique Features</div>
+        <div className="home-section2-header">Learning & Expertise</div>
         <div className="home-section2-title">Discover Our Unique Features</div>
         <div className={`home-section2-slider ${paused ? 'paused' : ''}`}
-     onMouseEnter={() => setPaused(true)}
-     onMouseLeave={() => setPaused(false)}>
-  {[...cards, ...cards].map((card, idx) => (
-    <div key={idx} className="home-section2-card">
-      <img src={card.image} alt={card.title} className="home-section2-image" />
-      <h3 className="home-section2-card-title">{card.title}</h3>
-      <p className="home-section2-card-desc">{card.desc}</p>
-      <div className="home-section2-readmore" onClick={() => handleLinkClick('/contact')}>Read More <FaArrowRight /></div>
-    </div>
-  ))}
-</div>
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}>
+          {[...cards, ...cards].map((card, idx) => (
+            <div key={idx} className="home-section2-card">
+              <img src={card.image} alt={card.title} className="home-section2-image" />
+              <h3 className="home-section2-card-title">{card.title}</h3>
+              <p className="home-section2-card-desc">{card.desc}</p>
+              <div className="home-section2-readmore" onClick={() => handleLinkClick('/contact')}>Read More <FaArrowRight /></div>
+            </div>
+          ))}
+        </div>
 
       </section>
 
@@ -284,9 +285,9 @@ function HomePage() {
         <div className="home-section3-container">
           <div className="home-section3-left">
             <div className="home-section3-image-grid">
-              <img src="/images/ab1.webp" alt="block1" className="home-section3-img top-left" />
-              <img src="/images/ab1.webp" alt="block2" className="home-section3-img bottom-left" />
-              <img src="/images/ab1.webp" alt="block3" className="home-section3-img middle-right" />
+              <img src="/images/ab2.jpg" alt="block1" className="home-section3-img top-left" />
+              <img src="/images/ab3.jpg" alt="block2" className="home-section3-img bottom-left" />
+              <img src="/images/ab4.jpg" alt="block3" className="home-section3-img middle-right" />
             </div>
           </div>
           <div className="home-section3-right">
@@ -352,6 +353,18 @@ function HomePage() {
               icon: '/images/icon6.svg',
               heading: 'Cloud Support',
               desc: 'Seamless integration with cloud services to keep your website fast and secure.'
+            },
+            {
+              number: '07',
+              icon: '/images/icon9.svg',
+              heading: 'Android Development',
+              desc: 'End-to-end Android app development to turn your ideas into mobile experiences.'
+            },
+            {
+              number: '08',
+              icon: '/images/icon10.svg',
+              heading: 'iOS Development',
+              desc: 'Crafting sleek and powerful iOS applications for seamless user experiences.'
             }
           ].map((card, i) => (
             <div key={i} className="home-section4-card" style={{ '--delay': `${i * 0.3}s` }}>

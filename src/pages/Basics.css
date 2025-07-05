@@ -1,0 +1,120 @@
+.basics-page {
+  background: #0f0f0f;
+  color: #edf6f5;
+  min-height: 100vh;
+  font-family: 'Outfit', sans-serif;
+}
+
+.basics-layout {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 0 0 20%;
+  max-width: 20%;
+  background: #1a1a1a;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  border-right: 1px solid #333;
+  position: sticky;
+  top: 80px;
+  box-sizing: border-box;
+}
+
+.basics-content-wrapper {
+    margin-top: 60px;
+  flex: 0 0 80%;
+  max-width: 80%;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.basics-course-section {
+  margin-bottom: 60px;
+}
+
+.basics-course-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00ecd7;
+  margin-bottom: 8px;
+}
+
+.basics-course-underline {
+  width: 150px;
+  height: 3px;
+  background: #00ecd7;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.basics-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.basics-video-card {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.basics-video-frame-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.basics-video-frame-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.basics-video-title {
+  font-size: 15px;
+  color: #ccc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+  .basics-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .basics-content-wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .basics-course-title {
+    font-size: 20px;
+  }
+
+  .basics-video-title {
+    font-size: 13px;
+  }
+}

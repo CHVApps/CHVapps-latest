@@ -9,6 +9,8 @@ function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const navRef = useRef();
+  const [coursesOpen, setCoursesOpen] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +53,17 @@ function Navbar() {
           <Link to="/services" className={isActive('/services') ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleLinkClick('/services'); }}>Services</Link>
           <Link to="/contact" className={isActive('/contact') ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleLinkClick('/contact'); }}>Contact</Link>
           <Link to="/internship" className={isActive('/internship') ? 'active' : ''} onClick={(e) => { e.preventDefault(); handleLinkClick('/internship'); }}>Internship</Link>
+          <div className="nav-dropdown" onMouseEnter={() => setCoursesOpen(true)} onMouseLeave={() => setCoursesOpen(false)}>
+            <button className="nav-dropdown-btn">Get Courses</button>
+            {coursesOpen && (
+              <div className="nav-dropdown-menu">
+                <Link to="/basics" onClick={() => handleLinkClick('/basics')}>Basics</Link>
+                <Link to="/advanced" onClick={() => handleLinkClick('/advanced')}>Advanced</Link>
+              </div>
+            )}
+          </div>
+
+
         </div>
 
         <div className="right-section">
