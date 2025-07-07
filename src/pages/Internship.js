@@ -44,7 +44,7 @@ const Internship = () => {
       course: null
     };
     try {
-      const response = await fetch('https://chvapps-backend.vercel.app/api/form-submission', {
+      const response = await fetch('https://chvapps-backend.vercel.app/api/form-submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend)
