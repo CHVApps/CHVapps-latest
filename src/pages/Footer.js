@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { FaPhoneAlt, FaEnvelope, FaClock, FaInstagram, FaYoutube, FaFacebookF, FaChevronDown, FaSkype } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaClock, FaInstagram, FaYoutube, FaFacebookF, FaChevronDown, FaSkype, FaLinkedin } from "react-icons/fa";
 import "./Footer.css";
 
 const Footer = () => {
@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="ganesh1-footer-left ganesh1-footer-left-final">
           <div className="ganesh1-footer-left-top-final">
             <img
-              src="/images/logo1.webp"
+              src="/images/Logo1.webp"
               alt="Footer Image"
               className="ganesh1-footer-image-final"
             />
@@ -117,17 +117,17 @@ const Footer = () => {
           <div className="ganesh1-footer-social">
             <span>Social Media</span>
             <div className="ganesh1-social-icons">
-              <a href="/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/chvapps/" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </a>
               <a href="/" target="_blank" rel="noopener noreferrer" >
                 <FaYoutube />
               </a>
-              <a href="/" target="_blank" rel="noopener noreferrer" >
+              <a href="https://www.instagram.com/chvapps/" target="_blank" rel="noopener noreferrer" >
                 <FaFacebookF />
               </a>
-              <a href="/" target="_blank" rel="noopener noreferrer">
-                <FaSkype />
+              <a href="https://www.linkedin.com/in/chvapps/" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin />
               </a>
             </div>
           </div>
