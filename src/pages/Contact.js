@@ -26,12 +26,10 @@ const Contact = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const { name, email, mobile_number, subject, message } = formData;
-
     if (!name || !email || !mobile_number || !subject || !message) {
       setError('All fields are required');
       return;
     }
-
     try {
       const res = await fetch('https://chvapps-backend.vercel.app/api/form-submissions', {
         method: 'POST',
@@ -43,7 +41,6 @@ const Contact = () => {
           course: null
         })
       });
-
       if (!res.ok) throw new Error('Failed to submit form');
       setSuccess('Message sent successfully!');
       setError('');
@@ -57,7 +54,6 @@ const Contact = () => {
   return (
     <div className="contact-page">
       <Navbar />
-
       <section className="contact-section1">
         <div className="contact-heading">
           <h2>Why You Should Contact Us!</h2>
@@ -86,19 +82,15 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
       <section className="contact-section2">
         <div className="contact-section2-container">
           <div className="contact-info">
             <h3><FaMapMarkerAlt className="contact-info-icon" /> Our Office Address:</h3>
             <p>Ganesh theatre, opposite building,<br /> Tagarapuvalasa (531163), Visakhapatnam</p>
-
             <h3><FaEnvelope className="contact-info-icon" /> Email Address:</h3>
             <p>chvapps7@gmail.com</p>
-
             <h3><FaPhoneAlt className="contact-info-icon" /> Mobile Number:</h3>
             <p>+91 7075531402</p>
-
             <h3><FaClock className="contact-info-icon" /> Business Hours:</h3>
             <p>Monday – Friday: 9:00 AM – 6:00 PM (PST)<br />Saturday – Sunday: Closed</p>
           </div>
@@ -111,13 +103,11 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
       <section className="contact-section3">
         <div className="contact-section3-container">
           <h2>Get In Touch</h2>
           <div className="contact-underline"></div>
           <p className="contact-form-desc">We would love to hear from you. Please fill out the form below and we will get back to you as soon as possible.</p>
-
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-form-group">
               <FaUser className="contact-form-icon" />
@@ -140,12 +130,10 @@ const Contact = () => {
             </div>
             <button type="submit" className="contact-form-btn">Send Message</button>
           </form>
-
           {success && <p className="success-message">{success}</p>}
           {error && <p className="error-message">{error}</p>}
         </div>
       </section>
-
       <Footer />
     </div>
   );

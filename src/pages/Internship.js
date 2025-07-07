@@ -28,14 +28,11 @@ const Internship = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, mobile_number, subject, message } = formData;
-
     if (!name || !email || !mobile_number || !subject || !message) {
       setError('All fields are required');
       return;
     }
-
     setLoading(true);
-
     const dataToSend = {
       name,
       email,
@@ -46,16 +43,13 @@ const Internship = () => {
       internship: subject,
       course: null
     };
-
     try {
       const response = await fetch('https://chvapps-backend.vercel.app/api/form-submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend)
       });
-
       if (!response.ok) throw new Error('Failed to submit the form');
-
       setSubmitted(true);
       setError(null);
       setFormData({ name: '', email: '', mobile_number: '', subject: '', message: '' });
@@ -69,7 +63,6 @@ const Internship = () => {
   return (
     <div className="internship-page">
       <Navbar />
-
       <section className="internship-cards-section">
         <div className="internship-heading">
           <h2>We Offer</h2>
@@ -85,7 +78,6 @@ const Internship = () => {
           ))}
         </div>
       </section>
-
       <section className="internship-form-section">
         <div className="internship-form-container">
           <h2>Apply for Internship</h2>
@@ -137,9 +129,7 @@ const Internship = () => {
           {error && <div className="internship-error-message" style={{ color: "red" }}>{error}</div>}
         </div>
       </section>
-
       <Footer />
-
       <style>{`
         @keyframes spin {
           0% { transform: rotate(0deg); }
