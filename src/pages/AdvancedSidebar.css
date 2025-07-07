@@ -72,3 +72,74 @@
 .advanced-sidebar::-webkit-scrollbar-track {
   background: transparent;
 }
+
+
+
+
+@media screen and (max-width: 768px) {
+  .advanced-sidebar {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .advanced-sidebar-heading {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .advanced-sidebar-course-title {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+
+  .advanced-sidebar-topic-item {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .advanced-sidebar {
+    text-align: center;
+  }
+
+  .advanced-sidebar-heading {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .advanced-sidebar-course-title {
+    font-size: 14px;
+    text-align: center;
+    margin: 0 auto 8px auto;
+  }
+
+  .advanced-sidebar-topic-item {
+    font-size: 12px;
+    text-align: center;
+    margin: 4px auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .advanced-sidebar {
+    text-align: center;
+  }
+
+  .advanced-sidebar-heading {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .advanced-sidebar-course-title {
+    font-size: 13px;
+    text-align: center;
+    margin: 0 auto 8px auto;
+  }
+
+  .advanced-sidebar-topic-item {
+    font-size: 11px;
+    text-align: center;
+    margin: 4px auto;
+  }
+}

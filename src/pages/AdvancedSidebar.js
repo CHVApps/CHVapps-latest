@@ -1,59 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdvancedSidebar.css';
 
 const AdvancedSidebar = ({ onVideoSelect }) => {
   const [openCourse, setOpenCourse] = useState(null);
+  const [courses, setCourses] = useState([]);
 
-  const courses = [
-    {
-      title: 'Python Advanced',
-      topics: [
-        { title: 'Advanced Python' },
-        { title: 'Decorators & Generators' },
-        { title: 'Async Programming' }
-      ]
-    },
-    {
-      title: 'Java Advanced',
-      topics: [
-        { title: 'Advanced Java' },
-        { title: 'Spring Boot' },
-        { title: 'Microservices' }
-      ]
-    },
-    {
-      title: 'AI & ML',
-      topics: [
-        { title: 'AI & ML Basics' },
-        { title: 'Deep Learning' },
-        { title: 'Model Deployment' }
-      ]
-    },
-    {
-      title: 'Full Stack',
-      topics: [
-        { title: 'Full Stack Development' },
-        { title: 'React & Node' },
-        { title: 'API Integration' }
-      ]
-    },
-    {
-      title: 'DevOps',
-      topics: [
-        { title: 'DevOps with AWS' },
-        { title: 'CI/CD Pipelines' },
-        { title: 'Docker & Kubernetes' }
-      ]
-    },
-    {
-      title: 'Cyber Security',
-      topics: [
-        { title: 'Cyber Security Advanced' },
-        { title: 'Penetration Testing' },
-        { title: 'Forensics' }
-      ]
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/api/courses-internships');
+      const data = await res.json();
+      const courseItems = data.filter(item => item.type.toLowerCase() === 'course');
+      const groupedCourses = courseItems.reduce((acc, item) => {
+        const courseName = item.name;
+        if (!acc[courseName]) {
+          acc[courseName] = { title: courseName, topics: [{ title: item.type }] };
+        } else {
+          acc[courseName].topics.push({ title: item.type });
+        }
+        return acc;
+      }, {});
+      setCourses(Object.values(groupedCourses));
+    } catch (err) {
+      console.error(err);
     }
-  ];
+  };
 
   const handleCourseClick = (courseTitle) => {
     setOpenCourse(openCourse === courseTitle ? null : courseTitle);

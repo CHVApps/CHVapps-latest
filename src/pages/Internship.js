@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import './Internship.css';
 import { FaAndroid, FaGlobe, FaBullhorn, FaPalette, FaRobot, FaDatabase, FaUser, FaEnvelope, FaEdit } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa6';
 
 const Internship = () => {
   const internships = [
@@ -14,7 +15,7 @@ const Internship = () => {
     { icon: <FaDatabase />, title: 'Data Analytics', desc: 'Learn to analyze data, generate insights, and make data-driven decisions for business growth.' }
   ];
 
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', mobile_number: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -26,34 +27,38 @@ const Internship = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      setError("All fields are required");
+    const { name, email, mobile_number, subject, message } = formData;
+
+    if (!name || !email || !mobile_number || !subject || !message) {
+      setError('All fields are required');
       return;
     }
 
     setLoading(true);
-    const dataToSend = { name: formData.name, email: formData.email, subject: formData.subject, message: formData.message };
+
+    const dataToSend = {
+      name,
+      email,
+      mobile_number,
+      subject,
+      message,
+      type: 'internship',
+      internship: subject,
+      course: null
+    };
 
     try {
-      const sheetdbResponse = await fetch("https://sheetdb.io/api/v1/okmxrbw02u35h", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: dataToSend }),
+      const response = await fetch('http://localhost:5000/api/form-submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
       });
 
-      if (!sheetdbResponse.ok) throw new Error("Failed to store data in SheetDB");
-
-      const emailResponse = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend),
-      });
-
-      if (!emailResponse.ok) throw new Error("Failed to send emails");
+      if (!response.ok) throw new Error('Failed to submit the form');
 
       setSubmitted(true);
       setError(null);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', mobile_number: '', subject: '', message: '' });
     } catch (err) {
       setError(`Error submitting the form: ${err.message}`);
     } finally {
@@ -95,6 +100,10 @@ const Internship = () => {
               <div className="internship-form-group">
                 <FaEnvelope className="internship-form-icon" />
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+              </div>
+              <div className="internship-form-group">
+                <FaPhone className="internship-form-icon" />
+                <input type="tel" name="mobile_number" placeholder="Your Mobile Number" value={formData.mobile_number} onChange={handleChange} required />
               </div>
               <div className="internship-form-group">
                 <FaEdit className="internship-form-icon" />

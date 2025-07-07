@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import AdvancedSidebar from './AdvancedSidebar';
+import Popup from './Popup';
 import './Advanced.css';
 
 const courseData = [
@@ -56,11 +57,21 @@ const courseData = [
 ];
 
 const Advanced = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false);
+
   return (
     <div className="advanced-page">
       <Navbar />
+      <div className="enroll-button-container">
+        <button className="enroll-button" onClick={handleOpenPopup}>Enroll Now</button>
+      </div>
       <div className="advanced-layout">
+        
         <AdvancedSidebar />
+        
         <div className="advanced-content-wrapper">
           {courseData.map((course, index) => (
             <div key={index} className="advanced-course-section">
@@ -86,6 +97,7 @@ const Advanced = () => {
           ))}
         </div>
       </div>
+      {showPopup && <Popup onClose={handleClosePopup} />}
       <Footer />
     </div>
   );
