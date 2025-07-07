@@ -22,7 +22,7 @@ const Popup = ({ onClose }) => {
 
   const fetchCourses = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/courses-internships');
+      const res = await fetch('https://chvapps-backend.vercel.app/api/courses-internships');
       const data = await res.json();
       const courseOptions = data.filter(item => item.type.toLowerCase() === 'course');
       setCourses(courseOptions);
@@ -58,7 +58,7 @@ const Popup = ({ onClose }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/form-submissions', {
+      const response = await fetch('https://chvapps-backend.vercel.app/api/form-submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend)

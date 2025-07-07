@@ -11,19 +11,15 @@ const AdvancedSidebar = ({ onVideoSelect }) => {
 
   const fetchCourses = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/courses-internships');
+      const res = await fetch('https://chvapps-backend.vercel.app/api/courses-internships');
       const data = await res.json();
       const courseItems = data.filter(item => item.type.toLowerCase() === 'course');
-      const groupedCourses = courseItems.reduce((acc, item) => {
-        const courseName = item.name;
-        if (!acc[courseName]) {
-          acc[courseName] = { title: courseName, topics: [{ title: item.type }] };
-        } else {
-          acc[courseName].topics.push({ title: item.type });
-        }
-        return acc;
-      }, {});
-      setCourses(Object.values(groupedCourses));
+      const uniqueCourses = [...new Set(courseItems.map(item => item.name))];
+      const groupedCourses = uniqueCourses.map(courseName => ({
+        title: courseName,
+        topics: [{ title: courseName }]
+      }));
+      setCourses(groupedCourses);
     } catch (err) {
       console.error(err);
     }

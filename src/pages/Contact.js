@@ -33,12 +33,12 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/form-submissions', {
+      const res = await fetch('https://chvapps-backend.vercel.app/api/form-submissions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          type: 'contact',       
+          type: 'contact',
           internship: null,
           course: null
         })
