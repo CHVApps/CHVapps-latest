@@ -44,7 +44,7 @@ function Navbar() {
     <nav className={`navbar ${showNavbar ? 'visible' : 'hidden'}`} ref={navRef}>
       <div className="navbar-container">
         <div className="logo-container">
-          <img src="/images/logo1.webp" alt="Logo" className="logo" />
+          <img src="/images/Logo1.webp" alt="Logo" className="logo" />
         </div>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
