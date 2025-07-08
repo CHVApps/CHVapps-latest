@@ -58,7 +58,7 @@ const Advanced = () => {
       }
     }
 
-    return './images/Logo1.webp'; 
+    return '/images/courses/logo-default.png'; // fallback image
   };
 
   const handleOpenPopup = () => setShowPopup(true);
