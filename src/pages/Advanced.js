@@ -1,63 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import AdvancedSidebar from './AdvancedSidebar';
 import Popup from './Popup';
 import './Advanced.css';
 
-const courseData = [
-  {
-    title: 'Python Advanced',
-    videos: [
-      { title: 'Decorators & Generators', videoUrl: 'https://www.youtube.com/embed/8hQG7QlcLBk' },
-      { title: 'Async Programming', videoUrl: 'https://www.youtube.com/embed/BI0asZuqFXM' },
-      { title: 'Web Scraping', videoUrl: 'https://www.youtube.com/embed/XQgXKtPSzUI' }
-    ]
-  },
-  {
-    title: 'Java Advanced',
-    videos: [
-      { title: 'Spring Boot', videoUrl: 'https://www.youtube.com/embed/35EQXmHKZYs' },
-      { title: 'Microservices', videoUrl: 'https://www.youtube.com/embed/1xo-0gCVhTU' },
-      { title: 'Streams & Lambdas', videoUrl: 'https://www.youtube.com/embed/t1-YZ6bF-g0' }
-    ]
-  },
-  {
-    title: 'AI & ML',
-    videos: [
-      { title: 'Intro to AI', videoUrl: 'https://www.youtube.com/embed/7eh4d6sabA0' },
-      { title: 'ML Basics', videoUrl: 'https://www.youtube.com/embed/GwIo3gDZCVQ' },
-      { title: 'Deep Learning', videoUrl: 'https://www.youtube.com/embed/tPYj3fFJGjk' }
-    ]
-  },
-  {
-    title: 'Full Stack',
-    videos: [
-      { title: 'MERN Stack', videoUrl: 'https://www.youtube.com/embed/7CqJlxBYj-M' },
-      { title: 'Deployment', videoUrl: 'https://www.youtube.com/embed/tn8pxJG9J6s' },
-      { title: 'REST API', videoUrl: 'https://www.youtube.com/embed/fgTGADljAeg' }
-    ]
-  },
-  {
-    title: 'DevOps',
-    videos: [
-      { title: 'Docker Basics', videoUrl: 'https://www.youtube.com/embed/Gjnup-PuquQ' },
-      { title: 'Kubernetes', videoUrl: 'https://www.youtube.com/embed/s_o8dwzRlu4' },
-      { title: 'AWS CI/CD', videoUrl: 'https://www.youtube.com/embed/7V9T0lGhM68' }
-    ]
-  },
-  {
-    title: 'Cyber Security',
-    videos: [
-      { title: 'Pen Testing', videoUrl: 'https://www.youtube.com/embed/D-VkYFxU5C4' },
-      { title: 'Network Security', videoUrl: 'https://www.youtube.com/embed/2fngvQS_PmQ' },
-      { title: 'Incident Response', videoUrl: 'https://www.youtube.com/embed/7q7E6-SsA3o' }
-    ]
-  }
-];
-
 const Advanced = () => {
+  const [courses, setCourses] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      const res = await fetch('https://chvapps-backend.vercel.app/api/courses-internships');
+      const data = await res.json();
+      const courseList = data.filter(item => item.type.toLowerCase() === 'course');
+      setCourses(courseList);
+    } catch (err) {
+      console.error('Failed to fetch courses:', err);
+    }
+  };
+
+  const getImageForCourse = (title) => {
+    const normalized = title.toLowerCase();
+    const keywordMap = {
+      java: 'logo-java.webp',
+      python: 'logo-python.png',
+      javascript: 'logo-javascript.png',
+      node: 'logo-node.png',
+      react: 'logo-react.png',
+      mysql: 'logo-mysql.png',
+      postgresql: 'logo-postgresql.png',
+      tailwind: 'logo-tailwind.png',
+      typescript: 'logo-typescript.jpg',
+      next: 'logo-nextjs.png',
+      aws: 'logo-aws.png',
+      docker: 'logo-docker.png',
+      mongodb: 'logo-mongodb.png',
+      golang: 'logo-golang.jpg',
+      rust: 'logo-rust.webp',
+      html: 'logo-html5.png',
+      css: 'logo-css3.webp',
+      swift: 'logo-swift.jpg',
+      csharp: 'logo-C#.png',
+      'c#': 'logo-C#.png',
+      'c++': 'C++.png',
+      express: 'logo-express.png',
+      github: 'logo-github.png',
+      kotlin: 'logo-kotlin.jpg'
+    };
+
+    for (const key in keywordMap) {
+      if (normalized.includes(key)) {
+        return `/images/courses/${keywordMap[key]}`;
+      }
+    }
+
+    return './images/Logo1.webp'; 
+  };
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
@@ -65,38 +67,34 @@ const Advanced = () => {
   return (
     <div className="advanced-page">
       <Navbar />
-      <div className="enroll-button-container">
-        <button className="enroll-button" onClick={handleOpenPopup}>Enroll Now</button>
+      <div className="advanced-header">
+        <h2 className="advanced-title">Advanced Courses</h2>
+        <div className="advanced-underline"></div>
       </div>
-      <div className="advanced-layout">
-        
-        <AdvancedSidebar />
-        
-        <div className="advanced-content-wrapper">
-          {courseData.map((course, index) => (
-            <div key={index} className="advanced-course-section">
-              <h3 className="advanced-course-title">{course.title}</h3>
-              <div className="advanced-course-underline"></div>
-              <div className="advanced-video-grid">
-                {course.videos.map((video, idx) => (
-                  <div key={idx} className="advanced-video-card">
-                    <iframe
-                      width="100%"
-                      height="180"
-                      src={video.videoUrl}
-                      title={video.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                    <p className="advanced-video-title">{video.title}</p>
-                  </div>
-                ))}
-              </div>
+
+      {courses.length > 0 ? (
+        <div className="advanced-grid">
+          {courses.map((course, index) => (
+            <div key={index} className="advanced-card">
+              <img
+                src={getImageForCourse(course.name)}
+                alt={course.name}
+                className="advanced-card-image"
+              />
+              <h3 className="advanced-card-title">{course.name}</h3>
+              <button className="advanced-card-button" onClick={handleOpenPopup}>
+                Enroll Now
+              </button>
             </div>
           ))}
         </div>
-      </div>
+      ) : (
+        <div className="no-courses">
+          <img src="/images/courses/coming-soon.png" alt="coming soon" className="no-courses-image" />
+          <p className="no-courses-text">We will get back to you soon…</p>
+        </div>
+      )}
+
       {showPopup && <Popup onClose={handleClosePopup} />}
       <Footer />
     </div>
