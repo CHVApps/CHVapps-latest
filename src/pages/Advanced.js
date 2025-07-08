@@ -64,7 +64,9 @@ const Advanced = () => {
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
 
-  const matchedCourses = courses.filter(course => getImageForCourse(course.name));
+  const matchedCourses = courses
+    .map(course => ({ ...course, image: getImageForCourse(course.name) }))
+    .filter(course => course.image);
 
   return (
     <div className="advanced-page">
@@ -79,7 +81,7 @@ const Advanced = () => {
           {matchedCourses.map((course, index) => (
             <div key={index} className="advanced-card">
               <img
-                src={getImageForCourse(course.name)}
+                src={course.image}
                 alt={course.name}
                 className="advanced-card-image"
               />
