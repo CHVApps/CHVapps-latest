@@ -19,7 +19,7 @@ const Advanced = () => {
       const courseList = data.filter(item => item.type.toLowerCase() === 'course');
       setCourses(courseList);
     } catch (err) {
-      console.error('Failed to fetch courses:', err);
+      setCourses([]);
     }
   };
 
@@ -58,11 +58,13 @@ const Advanced = () => {
       }
     }
 
-    return '/images/courses/logo-default.png'; // fallback image
+    return null;
   };
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
+
+  const matchedCourses = courses.filter(course => getImageForCourse(course.name));
 
   return (
     <div className="advanced-page">
@@ -72,9 +74,9 @@ const Advanced = () => {
         <div className="advanced-underline"></div>
       </div>
 
-      {courses.length > 0 ? (
+      {matchedCourses.length > 0 ? (
         <div className="advanced-grid">
-          {courses.map((course, index) => (
+          {matchedCourses.map((course, index) => (
             <div key={index} className="advanced-card">
               <img
                 src={getImageForCourse(course.name)}
