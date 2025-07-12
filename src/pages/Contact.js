@@ -90,7 +90,7 @@ const Contact = () => {
             <h3><FaEnvelope className="contact-info-icon" /> Email Address:</h3>
             <p>chvapps7@gmail.com</p>
             <h3><FaPhoneAlt className="contact-info-icon" /> Mobile Number:</h3>
-            <p>+91 7075531402</p>
+            <p>+91 7396525262</p>
             <h3><FaClock className="contact-info-icon" /> Business Hours:</h3>
             <p>Monday – Friday: 9:00 AM – 6:00 PM (PST)<br />Saturday – Sunday: Closed</p>
           </div>

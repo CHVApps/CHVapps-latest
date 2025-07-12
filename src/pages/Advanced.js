@@ -7,6 +7,7 @@ import './Advanced.css';
 const Advanced = () => {
   const [courses, setCourses] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState('');
 
   useEffect(() => {
     fetchCourses();
@@ -61,8 +62,15 @@ const Advanced = () => {
     return null;
   };
 
-  const handleOpenPopup = () => setShowPopup(true);
-  const handleClosePopup = () => setShowPopup(false);
+  const handleOpenPopup = (courseName) => {
+    setSelectedCourse(courseName);
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedCourse('');
+  };
 
   const matchedCourses = courses
     .map(course => ({ ...course, image: getImageForCourse(course.name) }))
@@ -75,7 +83,6 @@ const Advanced = () => {
         <h2 className="advanced-title">Advanced Courses</h2>
         <div className="advanced-underline"></div>
       </div>
-
       {matchedCourses.length > 0 ? (
         <div className="advanced-grid">
           {matchedCourses.map((course, index) => (
@@ -86,7 +93,7 @@ const Advanced = () => {
                 className="advanced-card-image"
               />
               <h3 className="advanced-card-title">{course.name}</h3>
-              <button className="advanced-card-button" onClick={handleOpenPopup}>
+              <button className="advanced-card-button" onClick={() => handleOpenPopup(course.name)}>
                 Enroll Now
               </button>
             </div>
@@ -98,8 +105,7 @@ const Advanced = () => {
           <p className="no-courses-text">We will get back to you soon…</p>
         </div>
       )}
-
-      {showPopup && <Popup onClose={handleClosePopup} />}
+      {showPopup && <Popup onClose={handleClosePopup} selectedCourse={selectedCourse} />}
       <Footer />
     </div>
   );

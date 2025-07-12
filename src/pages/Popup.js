@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaUser, FaEnvelope, FaPhoneAlt, FaEdit } from 'react-icons/fa';
 import './Popup.css';
 
-const Popup = ({ onClose }) => {
+const Popup = ({ onClose, selectedCourse }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     mobile_number: '',
-    subject: '',
     message: ''
   });
 
-  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    fetchCourses();
-  }, []);
-
-  const fetchCourses = async () => {
-    try {
-      const res = await fetch('https://chvapps-backend.vercel.app/api/courses-internships');
-      const data = await res.json();
-      const courseOptions = data.filter(item => item.type.toLowerCase() === 'course');
-      setCourses(courseOptions);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,9 +20,9 @@ const Popup = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, mobile_number, subject, message } = formData;
+    const { name, email, mobile_number, message } = formData;
 
-    if (!name || !email || !mobile_number || !subject || !message) {
+    if (!name || !email || !mobile_number || !message) {
       setError('All fields are required');
       return;
     }
@@ -50,10 +33,10 @@ const Popup = ({ onClose }) => {
       name,
       email,
       mobile_number,
-      subject,
+      subject: selectedCourse,
       message,
       type: 'course',
-      course: subject,
+      course: selectedCourse,
       internship: null
     };
 
@@ -68,7 +51,7 @@ const Popup = ({ onClose }) => {
 
       setSubmitted(true);
       setError('');
-      setFormData({ name: '', email: '', mobile_number: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', mobile_number: '', message: '' });
     } catch (err) {
       setError(`Error submitting the form: ${err.message}`);
     } finally {
@@ -84,7 +67,7 @@ const Popup = ({ onClose }) => {
           <div className="course-form-container">
             <h2>Apply for Course</h2>
             <div className="course-underline"></div>
-            <p className="course-form-desc">Fill out the form below to apply for one of our exciting course opportunities. We’ll get back to you as soon as possible.</p>
+            <p className="course-form-desc">You are applying for <strong>{selectedCourse}</strong>. Fill in your details below.</p>
             {!submitted ? (
               <form className="course-form" onSubmit={handleSubmit}>
                 <div className="course-form-group">
@@ -101,12 +84,7 @@ const Popup = ({ onClose }) => {
                 </div>
                 <div className="course-form-group">
                   <FaEdit className="course-form-icon" />
-                  <select name="subject" value={formData.subject} onChange={handleChange} required>
-                    <option value="">Select Course</option>
-                    {courses.map((course, idx) => (
-                      <option key={idx} value={course.name}>{course.name}</option>
-                    ))}
-                  </select>
+                  <input type="text" value={selectedCourse} disabled />
                 </div>
                 <div className="course-form-group">
                   <textarea name="message" placeholder="Your Message" rows="5" value={formData.message} onChange={handleChange} required></textarea>
