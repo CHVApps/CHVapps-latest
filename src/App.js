@@ -9,6 +9,8 @@ import Footer from './pages/Footer';
 import Internship from './pages/Internship';
 import Basics from './pages/Basics';
 import Advanced from './pages/Advanced';
+import WhatsappIcon from './pages/WhatsappIcon';
+import ChatbotIcon from './pages/ChatbotIcon';
 import './App.css';
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path="/basics" element={<Basics />} />
         <Route path="/advanced" element={<Advanced />} />
       </Routes>
+      <WhatsappIcon />
+      <ChatbotIcon />
     </Router>
   );
 }
