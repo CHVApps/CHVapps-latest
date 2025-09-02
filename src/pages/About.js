@@ -30,7 +30,7 @@ function About() {
     { image: "/images/emp7.jpg", name: "Yerramilli Satyanarayana Murthy", role: "Digital Marketing" },
     { image: "/images/emp8.jpg", name: "E Naveen Kumar", role: "Flutter Developer" },
     { image: "/images/emp9.jpg", name: "Devi Madamsetti", role: "Digital Marketing" },
-    { image: "/images/emp10.jpg", name: "Swaroop", role: "Senior Digital Marketing" },
+    { image: "/images/emp11.jpg", name: "Swaroop", role: "Senior Digital Marketing" },
   ];
 
   const feedbacks = [

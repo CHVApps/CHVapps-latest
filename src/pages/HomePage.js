@@ -384,26 +384,29 @@ function HomePage() {
 
       </section>
 
-      {/*<section className="home-section3-wrapper">
-        <div className="home-section3-container">
-          <div className="home-section3-right">
-            <h4 className="home-section3-subheading">About Us</h4>
-            <h2 className="home-section3-heading">
-              We provide perfect IT<br />solutions & technology for any<br />startups Agency's.
-            </h2>
-            <p className="home-section3-description">
-              Deliver beautiful emails that get opened and clicked every time. Personalized content to every subscriber. Fully customizable templates. Build relationships that lead to conversions.
-            </p>
+      <section className="home-section3-wrapper">
+  <div className="home-section3-container">
+    <div className="home-section3-card">
+      <h4 className="home-section3-subheading">About CHVApps</h4>
+      <h2 className="home-section3-heading">
+        Your perfect IT solutions partner
+      </h2>
+      <p className="home-section3-description">
+        At CHVApps, we specialize in delivering high-quality, cost-effective IT solutions tailored to your business needs. We build scalable and innovative products that drive growth for startups and agencies.
+      </p>
+      
+      <h5 className="home-section3-feature-title">Why Choose Us?</h5>
+      <p className="home-section3-feature-desc">
+        We provide top-notch IT solutions that are both affordable and reliable, ensuring you get the best results without breaking the bank.
+      </p>
 
-            <h5 className="home-section3-feature-title">Best Technical Solution</h5>
-            <p className="home-section3-feature-desc">
-              Nanotechnology immersion along the information high will close the loop on focusing solely.
-            </p>
+      <button className="home-section3-btn" onClick={() => handleLinkClick('/contact')}>
+        Get in Touch
+      </button>
+    </div>
+  </div>
+</section>
 
-            <button className="home-section3-btn" onClick={() => handleLinkClick('/contact')}>Get Our Services</button>
-          </div>
-        </div>
-      </section> */}
 
 
       <section className="home-section4-wrapper">
