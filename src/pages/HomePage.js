@@ -4,6 +4,10 @@ import { FaBolt, FaArrowRight, FaCheck, FaEnvelope } from 'react-icons/fa';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import './HomePage.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+
 
 function HomePage() {
   const [displayedWords, setDisplayedWords] = useState({ heading1: [], heading2: [], description: [] });
@@ -290,6 +294,17 @@ function HomePage() {
     },
   ];
 
+  function Stars({ count }) {
+    const total = 5;
+    return (
+      <div className="stars" aria-label={`${count} out of 5 stars`}>
+        {Array.from({ length: total }).map((_, i) => (
+          <span key={i} className={i < count ? "filled" : "empty"}>★</span>
+        ))}
+      </div>
+    );
+  }
+
 
   return (
     <div className="homepage-wrapper">
@@ -529,31 +544,83 @@ function HomePage() {
 
 
 
-      <section className="feedback-section">
-        <h2 className="feedback-title">These are the feedbacks from the website owners</h2>
-        <div className="feedback-cards-container">
-          {feedbacks.map((feedback, index) => (
-            <div className="feedback-card" key={index}>
-              <div className="feedback-card-top">
-                <div className="feedback-slideshow">
-                  {feedback.images.map((image, i) => (
-                    <img key={i} src={image} alt={`feedback-image-${index}-${i}`} className="feedback-image" />
+      <div className="swiper-title"><h2 className="title">Our Client's Valuable feedback</h2>
+        <div className="wrapper">
+
+
+          <style>{`
+        .wrapper { max-width: 1200px; margin: 0 auto; padding: 16px }
+        .title { font-size: 28px; font-weight: 700; text-align: center; margin: 8px 0 20px }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 16px }
+        .card { border: 1px solid #00ecd7; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.06); display: flex; flex-direction: column; background: #fff }
+        .slideImg { width: 100%; height: 200px; object-fit: cover; display: block }
+        .body { padding: 12px 14px 16px; display: flex; flex-direction: column; gap: 10px }
+        .row { display: flex; align-items: center; justify-content: space-between; gap: 12px }
+        .email { font-size: 14px; font-weight: 600; color: #111827; word-break: break-all }
+        .stars { display: inline-flex; gap: 2px }
+        .stars .filled { color: #f59e0b }
+        .stars .empty { color: #e5e7eb }
+        .review { font-size: 14px; line-height: 1.6; color: #374151 }
+        .swiper { width: 100%; height: 100% }
+        .swiper-wrapper { transition-timing-function: linear }
+
+        @media (min-width: 768px) {
+          .grid { grid-template-columns: repeat(2, 1fr) }
+          .slideImg { height: 220px }
+          .title { font-size: 30px }
+        }
+
+        @media (min-width: 1024px) {
+          .grid { grid-template-columns: repeat(3, 1fr) }
+          .slideImg { height: 240px }
+          .title { font-size: 32px }
+        }
+
+        @media (max-width: 500px) {
+          .wrapper { padding: 12px }
+          .slideImg { height: 180px }
+          .email { font-size: 13px }
+          .review { font-size: 13px }
+        }
+
+        @media (max-width: 400px) {
+          .wrapper { padding: 10px }
+          .slideImg { height: 160px }
+          .title { font-size: 22px }
+          .email { font-size: 12px }
+          .review { font-size: 12px }
+        }
+      `}</style>
+
+
+          <div className="grid">
+            {feedbacks.map((f, idx) => (
+              <div className="card" key={idx}>
+                <Swiper
+                  modules={[Autoplay]}
+                  slidesPerView={1}
+                  loop
+                  speed={3500}
+                  autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                >
+                  {f.images.map((src, i) => (
+                    <SwiperSlide key={i}>
+                      <img className="slideImg" src={src} alt="" />
+                    </SwiperSlide>
                   ))}
-                </div>
-                <div className="feedback-info">
-                  <div className="feedback-email">{feedback.email}</div>
-                  <div className="feedback-stars">
-                    {'★'.repeat(feedback.stars)}{'☆'.repeat(5 - feedback.stars)}
+                </Swiper>
+                <div className="body">
+                  <div className="row">
+                    <div className="email">{f.email}</div>
+                    <Stars count={f.stars} />
                   </div>
+                  <div className="review">{f.review}</div>
                 </div>
               </div>
-              <div className="feedback-card-bottom">
-                <p className="feedback-review">{feedback.review}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
 
       <section className="extra-services-section">

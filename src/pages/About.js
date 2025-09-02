@@ -4,6 +4,9 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { FaRocket, FaLaptopCode, FaLightbulb, FaCogs, FaBullseye, FaEye } from "react-icons/fa";
 import './About.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 function About() {
   const [activeButton, setActiveButton] = useState("about");
@@ -34,43 +37,55 @@ function About() {
   ];
 
   const feedbacks = [
-    { 
-      email: "linkfreight@gmail.com", 
-      images: ["/images/link-frieght1.png", "/images/link-frieght2.png", "/images/link-frieght3.png"], 
-      review: "We are extremely happy with the courier service platform CHV Apps developed for us. They provided a high-quality product at an affordable price, making our logistics operations seamless and efficient.", 
-      stars: 5 
+    {
+      email: "linkfreight@gmail.com",
+      images: ["/images/link-frieght1.png", "/images/link-frieght2.png", "/images/link-frieght3.png"],
+      review: "We are extremely happy with the courier service platform CHV Apps developed for us. They provided a high-quality product at an affordable price, making our logistics operations seamless and efficient.",
+      stars: 5
     },
-    { 
-      email: "livinglines@gmail.com", 
-      images: ["/images/living-lines1.png", "/images/living-lines2.png", "/images/living-lines3.png"], 
-      review: "CHV Apps delivered an outstanding online shopping platform for our household items store. The product quality was top-notch, and the pricing was incredibly reasonable. Their service helped us grow our customer base in no time!", 
-      stars: 5 
+    {
+      email: "livinglines@gmail.com",
+      images: ["/images/living-lines1.png", "/images/living-lines2.png", "/images/living-lines3.png"],
+      review: "CHV Apps delivered an outstanding online shopping platform for our household items store. The product quality was top-notch, and the pricing was incredibly reasonable. Their service helped us grow our customer base in no time!",
+      stars: 5
     },
-    { 
-      email: "kidzeebabametta@gmail.com", 
-      images: ["/images/kidzee1.png", "/images/kidzee2.png", "/images/kidzee3.png"], 
-      review: "We couldn’t be happier with the preschool platform CHV Apps created for us. They delivered a perfect solution with great features, all at an affordable price. Their development team is exceptional!", 
-      stars: 5 
+    {
+      email: "kidzeebabametta@gmail.com",
+      images: ["/images/kidzee1.png", "/images/kidzee2.png", "/images/kidzee3.png"],
+      review: "We couldn’t be happier with the preschool platform CHV Apps created for us. They delivered a perfect solution with great features, all at an affordable price. Their development team is exceptional!",
+      stars: 5
     },
-    { 
-      email: "mahaveer@gmail.com", 
-      images: ["/images/mahveer1.png", "/images/mahveer2.png", "/images/mahveer3.png"], 
-      review: "CHV Apps built a fantastic art supplies platform for us. The product exceeded our expectations, and they managed to deliver it within our budget without compromising on quality. Highly recommended!", 
-      stars: 5 
+    {
+      email: "mahaveer@gmail.com",
+      images: ["/images/mahveer1.png", "/images/mahveer2.png", "/images/mahveer3.png"],
+      review: "CHV Apps built a fantastic art supplies platform for us. The product exceeded our expectations, and they managed to deliver it within our budget without compromising on quality. Highly recommended!",
+      stars: 5
     },
-    { 
-      email: "taraskart@gmail.com", 
-      images: ["/images/taras-kart1.png", "/images/taras-kart2.png", "/images/taras-kart3.png"], 
-      review: "Thanks to CHV Apps, our online dress-selling platform is now live! The team created a beautiful, user-friendly site within our budget, and the results are incredible. We’re already seeing a great increase in sales!", 
-      stars: 5 
+    {
+      email: "taraskart@gmail.com",
+      images: ["/images/taras-kart1.png", "/images/taras-kart2.png", "/images/taras-kart3.png"],
+      review: "Thanks to CHV Apps, our online dress-selling platform is now live! The team created a beautiful, user-friendly site within our budget, and the results are incredible. We’re already seeing a great increase in sales!",
+      stars: 5
     },
-    { 
-      email: "srmarblesandgranites@gmail.com", 
-      images: ["/images/sr-marbles1.png", "/images/sr-marbles2.png", "/images/sr-marbles3.png"], 
-      review: "CHV Apps delivered an excellent marbles and granites platform for us. They managed to build a quality website with great features, all while sticking to our budget. It’s been a pleasure working with them!", 
-      stars: 5 
+    {
+      email: "srmarblesandgranites@gmail.com",
+      images: ["/images/sr-marbles1.png", "/images/sr-marbles2.png", "/images/sr-marbles3.png"],
+      review: "CHV Apps delivered an excellent marbles and granites platform for us. They managed to build a quality website with great features, all while sticking to our budget. It’s been a pleasure working with them!",
+      stars: 5
     },
-];
+  ];
+
+  function Stars({ count }) {
+    const total = 5;
+    return (
+      <div className="stars" aria-label={`${count} out of 5 stars`}>
+        {Array.from({ length: total }).map((_, i) => (
+          <span key={i} className={i < count ? "filled" : "empty"}>★</span>
+        ))}
+      </div>
+    );
+  }
+
 
   return (
     <div className="about">
@@ -159,31 +174,41 @@ function About() {
         </div>
       </section>
 
-      <section className="feedback-section">
-        <h2 className="feedback-title">These are the feedbacks from the website owners</h2>
-        <div className="feedback-cards-container">
-          {feedbacks.map((feedback, index) => (
-            <div className="feedback-card" key={index}>
-              <div className="feedback-card-top">
-                <div className="feedback-slideshow">
-                  {feedback.images.map((image, i) => (
-                    <img key={i} src={image} alt={`feedback-image-${index}-${i}`} className="feedback-image" />
+      <div className="swiper-title"><h2 className="title">Our Client's Valuable feedback</h2>
+        <div className="wrapper">
+
+
+          
+
+
+          <div className="grid">
+            {feedbacks.map((f, idx) => (
+              <div className="card" key={idx}>
+                <Swiper
+                  modules={[Autoplay]}
+                  slidesPerView={1}
+                  loop
+                  speed={3500}
+                  autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                >
+                  {f.images.map((src, i) => (
+                    <SwiperSlide key={i}>
+                      <img className="slideImg" src={src} alt="" />
+                    </SwiperSlide>
                   ))}
-                </div>
-                <div className="feedback-info">
-                  <div className="feedback-email">{feedback.email}</div>
-                  <div className="feedback-stars">
-                    {'★'.repeat(feedback.stars)}{'☆'.repeat(5 - feedback.stars)}
+                </Swiper>
+                <div className="body">
+                  <div className="row">
+                    <div className="email">{f.email}</div>
+                    <Stars count={f.stars} />
                   </div>
+                  <div className="review">{f.review}</div>
                 </div>
               </div>
-              <div className="feedback-card-bottom">
-                <p className="feedback-review">{feedback.review}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
       <Footer />
     </div>
