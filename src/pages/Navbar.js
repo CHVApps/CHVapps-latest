@@ -11,7 +11,6 @@ function Navbar() {
   const navRef = useRef();
   const [coursesOpen, setCoursesOpen] = useState(false);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
@@ -62,8 +61,6 @@ function Navbar() {
               </div>
             )}
           </div>
-
-
         </div>
 
         <div className="right-section">

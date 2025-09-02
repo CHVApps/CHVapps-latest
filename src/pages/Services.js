@@ -58,15 +58,15 @@ const Services = () => {
     },
     {
       number: '08',
-      icon: '/images/icon8.svg',
-      heading: 'Web Development',
-      desc: 'Modern, responsive, and dynamic web development tailored to your specific business needs and goals.'
-    },
-    {
-      number: '09',
       icon: '/images/icon9.svg',
       heading: 'Android Development',
       desc: 'End-to-end Android app development to turn your ideas into mobile experiences.'
+    },
+    {
+      number: '09',
+      icon: '/images/icon8.svg',
+      heading: 'Web Development',
+      desc: 'Modern, responsive, and dynamic web development tailored to your specific business needs and goals.'
     },
     {
       number: '10',
@@ -112,11 +112,31 @@ const Services = () => {
           <div className="underline"></div>
         </div>
         <div className="home-section4-cards">
-          {servicesData.map((card, i) => (
+          {servicesData.slice(0, 6).map((card, i) => (
             <div key={i} className="home-section4-card" style={{ '--delay': `${i * 0.3}s` }}>
               <div className="home-section4-number">{card.number}</div>
               <img src={card.icon} alt={card.heading} className="home-section4-icon" />
               <div className="home-section4-content">
+                <h3>{card.heading}</h3>
+                <p>{card.desc}</p>
+                <button className="readmore-btn" onClick={() => handleLinkClick('/contact')}>Read More</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="extra-services-section">
+        <div className="extra-services-heading">
+          <h2>More of What We Offer</h2>
+          <div className="underline"></div>
+        </div>
+        <div className="extra-services-cards">
+          {servicesData.slice(6).map((card, i) => (
+            <div key={i} className="extra-services-card">
+              <div className="extra-services-number">{card.number}</div>
+              <img src={card.icon} alt={card.heading} className="extra-services-icon" />
+              <div className="extra-services-content">
                 <h3>{card.heading}</h3>
                 <p>{card.desc}</p>
                 <button className="readmore-btn" onClick={() => handleLinkClick('/contact')}>Read More</button>

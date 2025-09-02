@@ -165,6 +165,89 @@
 
 
 
+.extra-services-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+}
+
+.extra-services-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.extra-services-heading h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.extra-services-heading .underline {
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 15px auto;
+}
+
+.extra-services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.extra-services-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.extra-services-card:hover {
+  transform: translateY(-10px);
+}
+
+.extra-services-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--bg-2);
+  margin-bottom: 20px;
+}
+
+.extra-services-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.extra-services-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+.extra-services-content p {
+  font-size: 16px;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+.readmore-btn {
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  color: var(--white);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.readmore-btn:hover {
+  transform: scale(1.05);
+}
 
 
 

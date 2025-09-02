@@ -59,7 +59,7 @@ const Contact = () => {
           <h2>Why You Should Contact Us!</h2>
           <div className="contact-underline"></div>
         </div>
-        <div className="contact-cards">
+        {/*<div className="contact-cards">
           <div className="contact-card">
             <FaHandshake className="contact-icon" />
             <h3 className="contact-card-title">Partnership Approach</h3>
@@ -80,7 +80,7 @@ const Contact = () => {
             <h3 className="contact-card-title">Easy Communication</h3>
             <p className="contact-card-desc">Reach us easily via phone or email and we’ll be happy to help.</p>
           </div>
-        </div>
+        </div> */}
       </section>
       <section className="contact-section2">
         <div className="contact-section2-container">

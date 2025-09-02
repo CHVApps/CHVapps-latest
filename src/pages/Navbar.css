@@ -45,7 +45,6 @@
   background: rgba(0,0,0,0.05);
 }
 
-
 .navbar {
   position: fixed;
   top: 0;
@@ -79,7 +78,14 @@
 .logo {
   height: 64px;
   border-radius: 12px;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 20px 5px rgba(0, 236, 215, 0.8);
 }
+
+.logo:hover {
+  box-shadow: 0 0 55px 5px rgba(0, 236, 215, 0.8);
+}
+
 
 .nav-links {
   display: flex;

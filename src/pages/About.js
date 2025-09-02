@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { FaRocket, FaLaptopCode, FaLightbulb, FaCogs, FaBullseye, FaEye } from "react-icons/fa";
@@ -20,6 +20,58 @@ function About() {
     sectionElement.scrollIntoView({ behavior: "smooth" });
   };
 
+  const employees = [
+    { image: "/images/emp1.jpg", name: "V Chandra Krishna", role: "CEO & Founder", message: "Leading the company with vision and strategy to drive success." },
+    { image: "/images/emp2.jpg", name: "K Harsha", role: "CTO", message: "Crafting innovative technology solutions and overseeing technical development." },
+    { image: "/images/emp3.jpg", name: "Joshi Sankar Telaprolu", role: "Trainer & Leads Generator" },
+    { image: "/images/emp4.jpg", name: "Jutur Abhisheik", role: "Full Stack Developer" },
+    { image: "/images/emp5.jpg", name: "M Soumya", role: "Full Stack Developer" },
+    { image: "/images/emp6.jpg", name: "Puli Ganesh", role: "Full Stack Developer" },
+    { image: "/images/emp7.jpg", name: "Yerramilli Satyanarayana Murthy", role: "Digital Marketing" },
+    { image: "/images/emp8.jpg", name: "E Naveen Kumar", role: "Flutter Developer" },
+    { image: "/images/emp9.jpg", name: "Devi Madamsetti", role: "Digital Marketing" },
+    { image: "/images/emp10.jpg", name: "Swaroop", role: "Senior Digital Marketing" },
+  ];
+
+  const feedbacks = [
+    { 
+      email: "linkfreight@gmail.com", 
+      images: ["/images/link-frieght1.png", "/images/link-frieght2.png", "/images/link-frieght3.png"], 
+      review: "We are extremely happy with the courier service platform CHV Apps developed for us. They provided a high-quality product at an affordable price, making our logistics operations seamless and efficient.", 
+      stars: 5 
+    },
+    { 
+      email: "livinglines@gmail.com", 
+      images: ["/images/living-lines1.png", "/images/living-lines2.png", "/images/living-lines3.png"], 
+      review: "CHV Apps delivered an outstanding online shopping platform for our household items store. The product quality was top-notch, and the pricing was incredibly reasonable. Their service helped us grow our customer base in no time!", 
+      stars: 5 
+    },
+    { 
+      email: "kidzeebabametta@gmail.com", 
+      images: ["/images/kidzee1.png", "/images/kidzee2.png", "/images/kidzee3.png"], 
+      review: "We couldn’t be happier with the preschool platform CHV Apps created for us. They delivered a perfect solution with great features, all at an affordable price. Their development team is exceptional!", 
+      stars: 5 
+    },
+    { 
+      email: "mahaveer@gmail.com", 
+      images: ["/images/mahveer1.png", "/images/mahveer2.png", "/images/mahveer3.png"], 
+      review: "CHV Apps built a fantastic art supplies platform for us. The product exceeded our expectations, and they managed to deliver it within our budget without compromising on quality. Highly recommended!", 
+      stars: 5 
+    },
+    { 
+      email: "taraskart@gmail.com", 
+      images: ["/images/taras-kart1.png", "/images/taras-kart2.png", "/images/taras-kart3.png"], 
+      review: "Thanks to CHV Apps, our online dress-selling platform is now live! The team created a beautiful, user-friendly site within our budget, and the results are incredible. We’re already seeing a great increase in sales!", 
+      stars: 5 
+    },
+    { 
+      email: "srmarblesandgranites@gmail.com", 
+      images: ["/images/sr-marbles1.png", "/images/sr-marbles2.png", "/images/sr-marbles3.png"], 
+      review: "CHV Apps delivered an excellent marbles and granites platform for us. They managed to build a quality website with great features, all while sticking to our budget. It’s been a pleasure working with them!", 
+      stars: 5 
+    },
+];
+
   return (
     <div className="about">
       <Navbar />
@@ -36,30 +88,34 @@ function About() {
         </div>
       </section>
 
-      <section className="home-section3-wrapper">
-        <div className="home-section3-container">
-          <div className="home-section3-left">
-            <div className="home-section3-image-grid">
-              <img src="/images/ab2.jpg" alt="block1" className="home-section3-img top-left" />
-              <img src="/images/ab3.jpg" alt="block2" className="home-section3-img bottom-left" />
-              <img src="/images/ab4.jpg" alt="block3" className="home-section3-img middle-right" />
-            </div>
-          </div>
-          <div className="home-section3-right">
-            <h4 className="home-section3-subheading">About Our Company</h4>
-            <h2 className="home-section3-heading">We provide perfect IT<br />solutions & technology for any<br />startups Agency's.</h2>
-            <p className="home-section3-description">
-              Deliver beautiful emails that get opened and clicked every time. Personalized content to every subscriber. Fully customizable templates. Build relationships that lead to conversions.
-            </p>
-            <div className="home-section3-feature">
-              <img src="/images/ic5.svg" alt="feature icon" className="home-section3-feature-icon" />
-              <div>
-                <h5 className="home-section3-feature-title">Best Technical Solution</h5>
-                <p className="home-section3-feature-desc">Nanotechnology immersion along the information high will close the loop on focusing solely</p>
+      {/* CEO & CTO Cards */}
+      <section className="ceo-cto-section">
+        <div className="ceo-cto-cards">
+          {employees.slice(0, 2).map((emp, index) => (
+            <div className="ceo-cto-card" key={index}>
+              <img src={emp.image} alt={emp.name} className="ceo-cto-img" />
+              <div className="ceo-cto-info">
+                <h3 className="ceo-cto-name">{emp.name}</h3>
+                <p className="ceo-cto-role">{emp.role}</p>
+                {emp.message && <p className="ceo-cto-message">{emp.message}</p>}
               </div>
             </div>
-            <button className="home-section3-btn" onClick={() => handleLinkClick('/contact')}>Get Our Services</button>
-          </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Other Employee Cards */}
+      <section className="team-section-wrapper">
+        <div className="team-section-container">
+          {employees.slice(2).map((emp, index) => (
+            <div className="team-card" key={index}>
+              <img src={emp.image} alt={emp.name} className="team-img" />
+              <div className="team-info">
+                <h3 className="team-name">{emp.name}</h3>
+                <p className="team-role">{emp.role}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -100,6 +156,32 @@ function About() {
           <FaCogs className="about-icon" />
           <h3>Support</h3>
           <p>Our dedicated team provides end-to-end support, ensuring the seamless delivery and performance of every project.</p>
+        </div>
+      </section>
+
+      <section className="feedback-section">
+        <h2 className="feedback-title">These are the feedbacks from the website owners</h2>
+        <div className="feedback-cards-container">
+          {feedbacks.map((feedback, index) => (
+            <div className="feedback-card" key={index}>
+              <div className="feedback-card-top">
+                <div className="feedback-slideshow">
+                  {feedback.images.map((image, i) => (
+                    <img key={i} src={image} alt={`feedback-image-${index}-${i}`} className="feedback-image" />
+                  ))}
+                </div>
+                <div className="feedback-info">
+                  <div className="feedback-email">{feedback.email}</div>
+                  <div className="feedback-stars">
+                    {'★'.repeat(feedback.stars)}{'☆'.repeat(5 - feedback.stars)}
+                  </div>
+                </div>
+              </div>
+              <div className="feedback-card-bottom">
+                <p className="feedback-review">{feedback.review}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
