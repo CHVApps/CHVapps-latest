@@ -108,7 +108,7 @@ const Footer = () => {
           </div>
           <div className="ganesh1-contact-details">
             <p>
-              <FaPhoneAlt /> +91 7396525262
+              <FaPhoneAlt /> +91 7396525262 / +91 7075531402
             </p>
             <p>
               <FaEnvelope /> chvapps7@gmail.com

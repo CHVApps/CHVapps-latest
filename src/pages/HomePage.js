@@ -114,6 +114,69 @@ function HomePage() {
 
   ];
 
+  const servicesData = [
+    {
+      number: '01',
+      icon: '/images/icon1.svg',
+      heading: 'Clean Code',
+      desc: 'We focus on clean, maintainable code to ensure your website runs smoothly and efficiently.'
+    },
+    {
+      number: '02',
+      icon: '/images/icon2.svg',
+      heading: 'Object Oriented',
+      desc: 'Our solutions are designed with scalability and flexibility, adapting to your business needs.'
+    },
+    {
+      number: '03',
+      icon: '/images/icon3.svg',
+      heading: '24h Service',
+      desc: 'We’re available around the clock to help you with any website issues or updates.'
+    },
+    {
+      number: '04',
+      icon: '/images/icon4.svg',
+      heading: 'Value for Money',
+      desc: 'Affordable, high-quality solutions that deliver more value to your business.'
+    },
+    {
+      number: '05',
+      icon: '/images/icon5.svg',
+      heading: 'Faster Response',
+      desc: 'Quick responses and rapid development so your projects stay on track.'
+    },
+    {
+      number: '06',
+      icon: '/images/icon6.svg',
+      heading: 'Cloud Support',
+      desc: 'Seamless integration with cloud services to keep your website fast and secure.'
+    },
+    {
+      number: '07',
+      icon: '/images/icon7.svg',
+      heading: 'Digital Marketing',
+      desc: 'We create data-driven digital marketing strategies that help grow your business and reach new audiences.'
+    },
+    {
+      number: '08',
+      icon: '/images/icon9.svg',
+      heading: 'Android Development',
+      desc: 'End-to-end Android app development to turn your ideas into mobile experiences.'
+    },
+    {
+      number: '09',
+      icon: '/images/icon8.svg',
+      heading: 'Web Development',
+      desc: 'Modern, responsive, and dynamic web development tailored to your specific business needs and goals.'
+    },
+    {
+      number: '10',
+      icon: '/images/icon10.svg',
+      heading: 'iOS Development',
+      desc: 'Crafting sleek and powerful iOS applications for seamless user experiences.'
+    }
+  ];
+
   useEffect(() => {
     const section = document.querySelector('.home-section7-wrapper');
     if (section) {
@@ -187,6 +250,46 @@ function HomePage() {
       desc: 'We denounce with righteous indignation & dislike men who are so beguiled'
     }
   ];
+
+  const feedbacks = [
+    {
+      email: "linkfreight@gmail.com",
+      images: ["/images/link-frieght1.png", "/images/link-frieght2.png", "/images/link-frieght3.png"],
+      review: "We are extremely happy with the courier service platform CHV Apps developed for us. They provided a high-quality product at an affordable price, making our logistics operations seamless and efficient.",
+      stars: 5
+    },
+    {
+      email: "livinglines@gmail.com",
+      images: ["/images/living-lines1.png", "/images/living-lines2.png", "/images/living-lines3.png"],
+      review: "CHV Apps delivered an outstanding online shopping platform for our household items store. The product quality was top-notch, and the pricing was incredibly reasonable. Their service helped us grow our customer base in no time!",
+      stars: 5
+    },
+    {
+      email: "kidzeebabametta@gmail.com",
+      images: ["/images/kidzee1.png", "/images/kidzee2.png", "/images/kidzee3.png"],
+      review: "We couldn’t be happier with the preschool platform CHV Apps created for us. They delivered a perfect solution with great features, all at an affordable price. Their development team is exceptional!",
+      stars: 5
+    },
+    {
+      email: "mahaveer@gmail.com",
+      images: ["/images/mahveer1.png", "/images/mahveer2.png", "/images/mahveer3.png"],
+      review: "CHV Apps built a fantastic art supplies platform for us. The product exceeded our expectations, and they managed to deliver it within our budget without compromising on quality. Highly recommended!",
+      stars: 5
+    },
+    {
+      email: "taraskart@gmail.com",
+      images: ["/images/taras-kart1.png", "/images/taras-kart2.png", "/images/taras-kart3.png"],
+      review: "Thanks to CHV Apps, our online dress-selling platform is now live! The team created a beautiful, user-friendly site within our budget, and the results are incredible. We’re already seeing a great increase in sales!",
+      stars: 5
+    },
+    {
+      email: "srmarblesandgranites@gmail.com",
+      images: ["/images/sr-marbles1.png", "/images/sr-marbles2.png", "/images/sr-marbles3.png"],
+      review: "CHV Apps delivered an excellent marbles and granites platform for us. They managed to build a quality website with great features, all while sticking to our budget. It’s been a pleasure working with them!",
+      stars: 5
+    },
+  ];
+
 
   return (
     <div className="homepage-wrapper">
@@ -281,32 +384,27 @@ function HomePage() {
 
       </section>
 
-      <section className="home-section3-wrapper">
+      {/*<section className="home-section3-wrapper">
         <div className="home-section3-container">
-          <div className="home-section3-left">
-            <div className="home-section3-image-grid">
-              <img src="/images/ab2.jpg" alt="block1" className="home-section3-img top-left" />
-              <img src="/images/ab3.jpg" alt="block2" className="home-section3-img bottom-left" />
-              <img src="/images/ab4.jpg" alt="block3" className="home-section3-img middle-right" />
-            </div>
-          </div>
           <div className="home-section3-right">
-            <h4 className="home-section3-subheading">About Our Company</h4>
-            <h2 className="home-section3-heading">We provide perfect IT<br />solutions & technology for any<br />startups Agency's.</h2>
+            <h4 className="home-section3-subheading">About Us</h4>
+            <h2 className="home-section3-heading">
+              We provide perfect IT<br />solutions & technology for any<br />startups Agency's.
+            </h2>
             <p className="home-section3-description">
               Deliver beautiful emails that get opened and clicked every time. Personalized content to every subscriber. Fully customizable templates. Build relationships that lead to conversions.
             </p>
-            <div className="home-section3-feature">
-              <img src="/images/ic5.svg" alt="feature icon" className="home-section3-feature-icon" />
-              <div>
-                <h5 className="home-section3-feature-title">Best Technical Solution</h5>
-                <p className="home-section3-feature-desc">Nanotechnology immersion along the information high will close the loop on focusing solely</p>
-              </div>
-            </div>
+
+            <h5 className="home-section3-feature-title">Best Technical Solution</h5>
+            <p className="home-section3-feature-desc">
+              Nanotechnology immersion along the information high will close the loop on focusing solely.
+            </p>
+
             <button className="home-section3-btn" onClick={() => handleLinkClick('/contact')}>Get Our Services</button>
           </div>
         </div>
-      </section>
+      </section> */}
+
 
       <section className="home-section4-wrapper">
         <div className="home-section4-heading-group">
@@ -431,6 +529,55 @@ function HomePage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+
+
+      <section className="feedback-section">
+        <h2 className="feedback-title">These are the feedbacks from the website owners</h2>
+        <div className="feedback-cards-container">
+          {feedbacks.map((feedback, index) => (
+            <div className="feedback-card" key={index}>
+              <div className="feedback-card-top">
+                <div className="feedback-slideshow">
+                  {feedback.images.map((image, i) => (
+                    <img key={i} src={image} alt={`feedback-image-${index}-${i}`} className="feedback-image" />
+                  ))}
+                </div>
+                <div className="feedback-info">
+                  <div className="feedback-email">{feedback.email}</div>
+                  <div className="feedback-stars">
+                    {'★'.repeat(feedback.stars)}{'☆'.repeat(5 - feedback.stars)}
+                  </div>
+                </div>
+              </div>
+              <div className="feedback-card-bottom">
+                <p className="feedback-review">{feedback.review}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      <section className="extra-services-section">
+        <div className="extra-services-heading">
+          <h2>More of What We Offer</h2>
+          <div className="underline"></div>
+        </div>
+        <div className="extra-services-cards">
+          {servicesData.slice(6).map((card, i) => (
+            <div key={i} className="extra-services-card">
+              <div className="extra-services-number">{card.number}</div>
+              <img src={card.icon} alt={card.heading} className="extra-services-icon" />
+              <div className="extra-services-content">
+                <h3>{card.heading}</h3>
+                <p>{card.desc}</p>
+                <button className="readmore-btn" onClick={() => handleLinkClick('/contact')}>Read More</button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
