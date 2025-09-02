@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBolt, FaArrowRight, FaCheck } from 'react-icons/fa';
+import { FaBolt, FaArrowRight, FaCheck, FaEnvelope } from 'react-icons/fa';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import './HomePage.css';
@@ -386,24 +386,13 @@ function HomePage() {
 
       <section className="home-section3-wrapper">
   <div className="home-section3-container">
-    <div className="home-section3-card">
-      <h4 className="home-section3-subheading">About CHVApps</h4>
-      <h2 className="home-section3-heading">
-        Your perfect IT solutions partner
-      </h2>
-      <p className="home-section3-description">
-        At CHVApps, we specialize in delivering high-quality, cost-effective IT solutions tailored to your business needs. We build scalable and innovative products that drive growth for startups and agencies.
-      </p>
-      
-      <h5 className="home-section3-feature-title">Why Choose Us?</h5>
-      <p className="home-section3-feature-desc">
-        We provide top-notch IT solutions that are both affordable and reliable, ensuring you get the best results without breaking the bank.
-      </p>
+    <h2 className="home-section3-heading">About Our Company</h2>
+    <p className="home-section3-description">
+  At CHVApps, we specialize in delivering high-quality, cost-effective IT solutions tailored to your business needs. We build scalable and innovative products that drive growth for startups and agencies. Our team combines deep industry expertise with cutting-edge technology to create solutions that not only meet but exceed your expectations.
+  <br /><br />
+  Whether you need a custom software solution, a seamless integration, or a mobile app that sets you apart from the competition, we have the skills and experience to bring your vision to life. We believe in collaboration, transparency, and delivering results that help your business thrive.
+  </p>
 
-      <button className="home-section3-btn" onClick={() => handleLinkClick('/contact')}>
-        Get in Touch
-      </button>
-    </div>
   </div>
 </section>
 
