@@ -385,16 +385,39 @@ function HomePage() {
       </section>
 
       <section className="home-section3-wrapper">
-  <div className="home-section3-container">
-    <h2 className="home-section3-heading">About Our Company</h2>
-    <p className="home-section3-description">
-  At CHVApps, we specialize in delivering high-quality, cost-effective IT solutions tailored to your business needs. We build scalable and innovative products that drive growth for startups and agencies. Our team combines deep industry expertise with cutting-edge technology to create solutions that not only meet but exceed your expectations.
-  <br /><br />
-  Whether you need a custom software solution, a seamless integration, or a mobile app that sets you apart from the competition, we have the skills and experience to bring your vision to life. We believe in collaboration, transparency, and delivering results that help your business thrive.
-  </p>
+        <div className="home-section3-container">
+          <h2 className="home-section3-heading">About Our Company</h2>
+          <p className="home-section3-description">
+            At CHVApps, we specialize in delivering high-quality, cost-effective IT solutions tailored to your business needs. We build scalable and innovative products that drive growth for startups and agencies. Our team combines deep industry expertise with cutting-edge technology to create solutions that not only meet but exceed your expectations.
+            <br /><br />
+            Whether you need a custom software solution, a seamless integration, or a mobile app that sets you apart from the competition, we have the skills and experience to bring your vision to life. We believe in collaboration, transparency, and delivering results that help your business thrive.
+          </p>
 
-  </div>
-</section>
+        </div>
+      </section>
+
+
+      <section className="home-section5-wrapper">
+        <div className="home-section5-container">
+          <div className="home-section5-left">
+            <h2 className="home-section5-heading">Advanced Digital Marketing & Web Solutions.</h2>
+            <p className="home-section5-description">
+              We offer top-tier web development services designed to elevate your online presence. Whether it’s designing a new website or optimizing your current one, we deliver custom solutions that align with your business goals.
+            </p>
+            <button className="home-section5-button" onClick={() => handleLinkClick('/contact')}>Check it out</button>
+          </div>
+          <div className="home-section5-right">
+            <div className="home-section5-slideshow">
+              <div className="home-section5-slides">
+                <img src="/images/project1.webp" alt="Project 1" className="home-section5-slide" />
+                <img src="/images/project2.webp" alt="Project 2" className="home-section5-slide" />
+                <img src="/images/project3.webp" alt="Project 3" className="home-section5-slide" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
 
 
@@ -470,26 +493,6 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="home-section5-wrapper">
-        <div className="home-section5-container">
-          <div className="home-section5-left">
-            <h2 className="home-section5-heading">Advanced Digital Marketing & Web Solutions.</h2>
-            <p className="home-section5-description">
-              We offer top-tier web development services designed to elevate your online presence. Whether it’s designing a new website or optimizing your current one, we deliver custom solutions that align with your business goals.
-            </p>
-            <button className="home-section5-button" onClick={() => handleLinkClick('/contact')}>Check it out</button>
-          </div>
-          <div className="home-section5-right">
-            <div className="home-section5-slideshow">
-              <div className="home-section5-slides">
-                <img src="/images/project1.webp" alt="Project 1" className="home-section5-slide" />
-                <img src="/images/project2.webp" alt="Project 2" className="home-section5-slide" />
-                <img src="/images/project3.webp" alt="Project 3" className="home-section5-slide" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="home-section6-wrapper">
         <div className="home-section6-container">
