@@ -663,6 +663,50 @@ body {
   margin-top: 10px;
 }
 
+@media (max-width: 1024px) {
+  .ceo-cto-cards {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .ceo-cto-card {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ceo-cto-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ceo-cto-card {
+    width: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+  .ceo-cto-cards {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .ceo-cto-card {
+    width: 220px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ceo-cto-cards {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .ceo-cto-card {
+    width: 220px;
+  }
+}
+
+
+
 /* Team Member Cards */
 .team-section-wrapper {
   max-width: 1200px;
