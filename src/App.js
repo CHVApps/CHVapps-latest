@@ -5,10 +5,10 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
-import Footer from './pages/Footer';
 import Internship from './pages/Internship';
 import Basics from './pages/Basics';
 import Advanced from './pages/Advanced';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import WhatsappIcon from './pages/WhatsappIcon';
 import ChatbotIcon from './pages/ChatbotIcon';
 import './App.css';
@@ -25,6 +25,7 @@ function App() {
         <Route path="/internship" element={<Internship />} />
         <Route path="/basics" element={<Basics />} />
         <Route path="/advanced" element={<Advanced />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <WhatsappIcon />
       <ChatbotIcon />
