@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Gallery.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Gallery = () => {
-  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
 
   const items = ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg", "a5.jpg", "a6.jpg", "a7.jpg", "a8.jpg"];
@@ -106,30 +104,10 @@ const Gallery = () => {
         </div>
 
         <img src="/Images/baloon.png" className="decor-image" style={{ top: "10%", left: "5%", width: "60px" }} alt="baloon" />
-        <img
-          src="/Images/mouse_img.png"
-          className="decor-image"
-          style={{ bottom: "10%", right: "5%", width: "50px", position: "absolute" }}
-          alt="mouse"
-        />
-        <img
-          src="/Images/scale.png"
-          className="decor-image"
-          style={{ top: "20%", left: "70%", width: "60px", position: "absolute" }}
-          alt="scale"
-        />
-        <img
-          src="/Images/bird.png"
-          className="decor-image"
-          style={{ top: "40%", left: "15%", width: "50px", position: "absolute" }}
-          alt="bird"
-        />
-        <img
-          src="/Images/fruit_img.png"
-          className="decor-image"
-          style={{ bottom: "15%", right: "20%", width: "60px", position: "absolute" }}
-          alt="fruit"
-        />
+        <img src="/Images/mouse_img.png" className="decor-image" style={{ bottom: "10%", right: "5%", width: "50px", position: "absolute" }} alt="mouse" />
+        <img src="/Images/scale.png" className="decor-image" style={{ top: "20%", left: "70%", width: "60px", position: "absolute" }} alt="scale" />
+        <img src="/Images/bird.png" className="decor-image" style={{ top: "40%", left: "15%", width: "50px", position: "absolute" }} alt="bird" />
+        <img src="/Images/fruit_img.png" className="decor-image" style={{ bottom: "15%", right: "20%", width: "60px", position: "absolute" }} alt="fruit" />
       </section>
 
       <section id="fun-play-section" className="fun-play-section">
@@ -170,10 +148,7 @@ const Gallery = () => {
           <img src="/Images/more_fish.png" className="decor-image15" style={{ top: "60%", left: "45%", width: "50px" }} alt="fish" />
 
           {events.map((event, idx) => (
-            <div
-              key={event.heading}
-              className={`event-item ${index === idx ? "active" : ""} ${idx % 2 === 0 ? "left-layout" : "right-layout"}`}
-            >
+            <div key={event.heading} className={`event-item ${index === idx ? "active" : ""} ${idx % 2 === 0 ? "left-layout" : "right-layout"}`}>
               <div className="event-image-container">
                 <img src={`/Images/${event.image}`} alt={event.heading} className="event-image" />
               </div>
@@ -270,12 +245,7 @@ const Gallery = () => {
 
           <div className="infra-row">
             {Array.from({ length: 4 }).map((_, i) => (
-              <img
-                src={`/Images/infra${i + 13}.jpg`}
-                key={`bottom-${i}`}
-                alt={`Infrastructure bottom ${i + 1}`}
-                className="infra-fence-image"
-              />
+              <img src={`/Images/infra${i + 13}.jpg`} key={`bottom-${i}`} alt={`Infrastructure bottom ${i + 1}`} className="infra-fence-image" />
             ))}
           </div>
         </div>
