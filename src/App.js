@@ -9,6 +9,7 @@ import Internship from './pages/Internship';
 import Basics from './pages/Basics';
 import Advanced from './pages/Advanced';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import PaymentPage from './pages/PaymentPage';
 import WhatsappIcon from './pages/WhatsappIcon';
 import ChatbotIcon from './pages/ChatbotIcon';
 import './App.css';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/internship" element={<Internship />} />
         <Route path="/basics" element={<Basics />} />
         <Route path="/advanced" element={<Advanced />} />
+        <Route path="/payment" element={<PaymentPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       <WhatsappIcon />

@@ -11,6 +11,8 @@ function Navbar() {
   const navRef = useRef();
   const [coursesOpen, setCoursesOpen] = useState(false);
 
+  const showPaymentLink = true;
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
@@ -124,16 +126,29 @@ function Navbar() {
             )}
           </div>
 
-          <Link
-            to="/privacy-policy"
-            className={isActive('/privacy-policy') ? 'active' : ''}
-            onClick={(e) => {
-              e.preventDefault();
-              handleLinkClick('/privacy-policy');
-            }}
-          >
-            Privacy Policy
-          </Link>
+          {showPaymentLink ? (
+            <Link
+              to="/payment"
+              className={isActive('/payment') ? 'active' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/payment');
+              }}
+            >
+              Payment
+            </Link>
+          ) : (
+            <Link
+              to="/privacy-policy"
+              className={isActive('/privacy-policy') ? 'active' : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick('/privacy-policy');
+              }}
+            >
+              Privacy Policy
+            </Link>
+          )}
         </div>
 
         <div className="right-section">
