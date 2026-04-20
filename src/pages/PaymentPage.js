@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import './PaymentPage.css';
 
-const COURSE_NAME = 'Internship Program';
-const COURSE_FEE = 7000;
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://chvapps-backend.vercel.app/api';
 
 function PaymentPage() {
   const [formData, setFormData] = useState({
     full_name: '',
     mobile: '',
-    email: ''
+    email: '',
+    amount: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -21,6 +20,12 @@ function PaymentPage() {
   const [popupTitle, setPopupTitle] = useState('');
   const [popupMessage, setPopupMessage] = useState('');
 
+  const formatAmountDisplay = (value) => {
+    const num = Number(value);
+    if (!value || Number.isNaN(num) || num <= 0) return '0';
+    return num.toLocaleString('en-IN');
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,6 +34,23 @@ function PaymentPage() {
       setFormData((prev) => ({
         ...prev,
         [name]: numericValue
+      }));
+      setStatusMessage('');
+      setStatusType('');
+      return;
+    }
+
+    if (name === 'amount') {
+      const numericValue = value.replace(/[^\d.]/g, '');
+      const parts = numericValue.split('.');
+      const sanitizedValue =
+        parts.length > 2
+          ? `${parts[0]}.${parts.slice(1).join('')}`
+          : numericValue;
+
+      setFormData((prev) => ({
+        ...prev,
+        [name]: sanitizedValue
       }));
       setStatusMessage('');
       setStatusType('');
@@ -85,8 +107,9 @@ function PaymentPage() {
     const name = formData.full_name.trim();
     const mobile = formData.mobile.trim();
     const email = formData.email.trim().toLowerCase();
+    const amount = Number(formData.amount);
 
-    if (!name || !mobile || !email) {
+    if (!name || !mobile || !email || !formData.amount) {
       setStatusType('error');
       setStatusMessage('Please fill all fields.');
       return false;
@@ -107,6 +130,12 @@ function PaymentPage() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setStatusType('error');
       setStatusMessage('Please enter a valid email address.');
+      return false;
+    }
+
+    if (Number.isNaN(amount) || amount <= 0) {
+      setStatusType('error');
+      setStatusMessage('Please enter a valid payment amount.');
       return false;
     }
 
@@ -140,7 +169,8 @@ function PaymentPage() {
       const payload = {
         full_name: formData.full_name.trim(),
         email: formData.email.trim().toLowerCase(),
-        mobile: formData.mobile.trim()
+        mobile: formData.mobile.trim(),
+        amount: Number(formData.amount)
       };
 
       const orderResponse = await fetch(`${API_BASE_URL}/payment-create-order`, {
@@ -177,7 +207,8 @@ function PaymentPage() {
         },
         notes: {
           enrollment_id: orderData.enrollment_id,
-          course_name: orderData.course_name
+          course_name: orderData.course_name,
+          entered_amount: String(orderData.display_amount || '')
         },
         theme: {
           color: '#3fb8a9'
@@ -208,7 +239,8 @@ function PaymentPage() {
             setFormData({
               full_name: '',
               mobile: '',
-              email: ''
+              email: '',
+              amount: ''
             });
             openPopup('success', 'Payment Successful', 'Our team will contact you shortly.');
           } catch (error) {
@@ -293,17 +325,17 @@ function PaymentPage() {
             <div className="payment-hero-card">
               <div className="payment-hero-card-top">
                 <span className="mini-label">Program</span>
-                <h2>{COURSE_NAME}</h2>
+                <h2>Internship Program</h2>
               </div>
 
               <div className="payment-price-row">
-                <span>Amount</span>
-                <strong>₹{COURSE_FEE}</strong>
+                <span>Entered Amount</span>
+                <strong>₹{formatAmountDisplay(formData.amount)}</strong>
               </div>
 
               <div className="payment-price-row total">
                 <span>Total Payable</span>
-                <strong>₹{COURSE_FEE}</strong>
+                <strong>₹{formatAmountDisplay(formData.amount)}</strong>
               </div>
             </div>
           </div>
@@ -362,10 +394,26 @@ function PaymentPage() {
                 </div>
               </div>
 
+              <div className="form-row">
+                <div className="form-group full-width">
+                  <label htmlFor="amount">Amount</label>
+                  <input
+                    type="text"
+                    id="amount"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleChange}
+                    placeholder="Enter payment amount"
+                    inputMode="decimal"
+                    autoComplete="off"
+                  />
+                </div>
+              </div>
+
               <div className="payment-bottom-bar">
                 <div className="payment-total-box">
                   <span>Total Payable</span>
-                  <strong>₹{COURSE_FEE}</strong>
+                  <strong>₹{formatAmountDisplay(formData.amount)}</strong>
                 </div>
 
                 <button type="submit" className="payment-btn" disabled={loading}>
